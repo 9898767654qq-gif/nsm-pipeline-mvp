@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NSM Pipeline — прототип MVP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;650&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="top">
+      <div>
+        <p class="eyebrow">NSM-PIPELINE · прототип для теста</p>
+        <h1>Разговор → смысл → документ</h1>
+        <p class="lead">Термин не входит в договор, пока у него нет простого ядра и фразы согласия.</p>
+      </div>
+      <div class="pills">
+        <span class="pill on">Слой 0 речь</span>
+        <span class="pill on">Слой 1 ядро</span>
+        <span class="pill on">Слой 2 документы</span>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step on"><b>01 запись</b>два голоса</div>
+      <div class="step"><b>02 цитата</b>только сказанное</div>
+      <div class="step"><b>03 ядро</b>свойства вместо ярлыка</div>
+      <div class="step"><b>04 документ</b>подпись под сутью</div>
+    </div>
+    <div class="grid">
+      <section class="card">
+        <h2>Сессия на объекте</h2>
+        <p class="hint">Возьмите демо или вставьте свой текст в формате «Заказчик: … / Подрядчик: …».</p>
+        <div class="meta">
+          <input id="object" placeholder="Объект" />
+          <input id="customer" placeholder="Заказчик" />
+          <input id="contractor" placeholder="Подрядчик" />
+          <select id="role" aria-label="Кто ведёт">
+            <option>Ведёт подрядчик</option>
+            <option>Совместный осмотр</option>
+          </select>
+        </div>
+        <div class="btnrow">
+          <button id="demoClimate" type="button">Демо: климат</button>
+          <button id="demoGarage" class="secondary" type="button">Демо: гараж 6×6</button>
+          <button id="recBtn" class="ghost" type="button">Начать запись</button>
+        </div>
+        <audio id="audio" controls style="display:none; width:100%; margin: 8px 0 12px;"></audio>
+        <textarea id="transcript" placeholder="Текст разговора"></textarea>
+        <div class="btnrow">
+          <button id="runBtn" type="button">Собрать протокол</button>
+          <span id="status" class="hint" style="margin:0;"></span>
+        </div>
+      </section>
+      <aside class="card">
+        <h2>Фильтр качества</h2>
+        <p class="hint" id="counts">Сначала прогоните разговор.</p>
+        <div class="flags" id="flags">
+          <div class="flag">Правило: нет цитаты — нет работы.</div>
+          <div class="flag">Правило: ярлык без ядра → неясно.</div>
+          <div class="flag">Отказ хранится отдельно от сметы.</div>
+        </div>
+      </aside>
+    </div>
+    <section style="margin-top:16px;">
+      <div class="proto-grid">
+        <div class="card"><h2>Включённые работы</h2><div id="list-included"></div></div>
+        <div class="card"><h2>Технология подрядчика</h2><div id="list-tech"></div></div>
+        <div class="card"><h2>Отказы</h2><div id="list-refused"></div></div>
+        <div class="card"><h2>Неясности</h2><div id="list-unclear"></div></div>
+      </div>
+    </section>
+    <section class="docs">
+      <div class="card">
+        <h2>Протокол</h2>
+        <pre id="doc-protocol">Появится после сборки.</pre>
+        <div class="btnrow">
+          <button id="dlProtocol" class="secondary" type="button">Скачать</button>
+          <button id="printBtn" class="ghost" type="button">Печать</button>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Техническое задание</h2>
+        <pre id="doc-tz">Появится после сборки.</pre>
+        <div class="btnrow"><button id="dlTz" class="secondary" type="button">Скачать</button></div>
+      </div>
+      <div class="card">
+        <h2>Спецификация</h2>
+        <pre id="doc-spec">Появится после сборки.</pre>
+        <div class="btnrow">
+          <button id="dlSpec" class="secondary" type="button">Скачать</button>
+          <button id="dlJson" class="ghost" type="button">JSON сессии</button>
+        </div>
+      </div>
+    </section>
+    <p class="footer-note">Это прототип слоя смысла, не Гранд-Смета. Распознавание речи и ЭЦП в эту сборку не входят.</p>
+  </div>
+  <script src="js/molecules.js"></script>
+  <script src="js/demos.js"></script>
+  <script src="js/pipeline.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
